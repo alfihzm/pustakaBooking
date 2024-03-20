@@ -1,8 +1,9 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class ModelBuku extends CI_Model
 {
-    // Manajemen Buku
+    //manajemen buku 
     public function getBuku()
     {
         return $this->db->get('buku');
@@ -35,20 +36,22 @@ class ModelBuku extends CI_Model
         if (!empty($where) && count($where) > 0) {
             $this->db->where($where);
         }
-
         $this->db->from('buku');
+
         return $this->db->get()->row($field);
     }
 
-    //manajemen kategori
+    //manajemen kategori 
     public function getKategori()
     {
         return $this->db->get('kategori');
     }
+
     public function kategoriWhere($where)
     {
         return $this->db->get_where('kategori', $where);
     }
+
     public function simpanKategori($data = null)
     {
         $this->db->insert('kategori', $data);
@@ -58,15 +61,17 @@ class ModelBuku extends CI_Model
     {
         $this->db->delete('kategori', $where);
     }
+
     public function updateKategori($where = null, $data = null)
     {
         $this->db->update('kategori', $data, $where);
     }
 
     //join 
+    // Masalah terjadi di sini, select seluruh kolom seperti judul_buku, pengarang, dst....
     public function joinKategoriBuku($where)
     {
-        $this->db->select('buku.id_kategori,kategori.kategori');
+        $this->db->select('buku.id, buku.judul_buku, buku.pengarang, buku.penerbit, buku.tahun_terbit, buku.isbn, buku.image, buku.dipinjam, buku.dibooking, buku.stok, kategori.kategori');
         $this->db->from('buku');
         $this->db->join('kategori', 'kategori.id = buku.id_kategori');
         $this->db->where($where);
