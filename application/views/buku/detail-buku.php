@@ -6,11 +6,7 @@
                         src="<?php echo base_url(); ?>assets/img/upload/<?= $gambar; ?>"
                         style="max-width:100%; max-height: 100%; height: 150px; width: 120px">
                     <div class="caption">
-
-                        <br>
-
-                        <p style="min-height:40px;" align="center"><?= $pengarang ?></p>
-
+                        <h5 style="min-height:40px;" align="center"><?= $pengarang ?></h5>
                         <center>
                             <table class="table table-stripped">
                                 <tr>
@@ -43,10 +39,14 @@
                                 </tr>
                             </table>
                         </center>
-                        <p> <a class="btn btn-outline-primary fas fw fa-shopping-cart"
-                                href="<?= base_url('booking/tambahBooking/' . $id); ?>"> Booking</a> <span
-                                class="btn btn-outline-secondary fas fw fa-reply" onclick="window.history.go(-1)">
-                                Kembali</span> </p>
+                        <p>
+                            <a class="btn btn-outline-primary fas fw fa-shopping-cart"
+                                href="<?= base_url('booking/tambahBooking/' . $id); ?>"> Booking
+                            </a>
+                            <span class="btn btn-outline-secondary fas fw fa-reply" onclick="window.history.go(-1)">
+                                Kembali
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
