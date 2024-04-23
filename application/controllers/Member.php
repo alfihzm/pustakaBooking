@@ -74,10 +74,10 @@ class Member extends CI_Controller
 
     public function myProfil()
     {
-        $data['judul'] = 'Profil Saya';
         $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         foreach ($user as $a) {
             $data = [
+                'judul' => 'Profil Saya',
                 'image' => $user['image'],
                 'user' => $user['nama'], 'email' => $user['email'], 'tanggal_input' => $user['tanggal_input'],
             ];
@@ -95,6 +95,7 @@ class Member extends CI_Controller
         $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         foreach ($user as $a) {
             $data = [
+                'judul' => 'Ubah Profil',
                 'image' => $user['image'],
                 'user' => $user['nama'],
                 'email' => $user['email'],
@@ -115,10 +116,10 @@ class Member extends CI_Controller
             $upload_image = $_FILES['image']['name'];
             if ($upload_image) {
                 $config['upload_path'] = './assets/img/profile/';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size'] = '3000';
-                $config['max_width'] = '1024';
-                $config['max_height'] = '1000';
+                $config['allowed_types'] = 'gif|jpg|png|webp|jpeg';
+                $config['max_size'] = '10240';
+                $config['max_width'] = '4096';
+                $config['max_height'] = '4096';
                 $config['file_name'] = 'pro' . time();
 
                 $this->load->library('upload', $config);
